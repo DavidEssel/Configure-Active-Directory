@@ -44,7 +44,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 </p>
 <p>
-Set Up Rescouces in Azure cloud. Creat Domain Controller, name it "DC-1," then set DC's NIC Private IP address to be static. Next create the Client VM, name it "Client-1," use the same resouce group and vnet that was created for VM 1 (DC). check topology with Network Watcher. Next insure connectivity for both VMs. Login to Client-1 Remote Desktop and ping DC-1'S Private IP address (perpetual ping). Login to DC and enable ICMPV4 in the local windows Firewall then check back into Client-1 and make sure the ping is successful. Next you are going to install Active Directory. Login to DC-1 and instal Active Directory Domain Services. Promote as a DC: Set Up a new forest with any domain name (example: mydomain.com). Restart and then log back into DC-1 as user mydomain.com\labuser.
+Resources (Azure cloud). Domain Controller "DC-1," Set DC's NIC Private IP address= static. Client VM "Client-1,". Check Topology in Network Watcher. Login to Client-1 Remote Desktop and ping DC-1'S Private IP address (perpetual ping). Login to DC and enable ICMPV4 in the local windows Firewall then check Client-1 for ping. Login to DC-1 and install Active Directory Domain Services. Promote as a DC: Set Up forest with domain name (example: mydomain.com). Restart and then log back into DC-1 as user mydomain.com\labuser.
 </p>
 <br />
 
@@ -57,7 +57,7 @@ Set Up Rescouces in Azure cloud. Creat Domain Controller, name it "DC-1," then s
   
 </p>
 <p>
-Then create an Admin and Normal user acccount. Create an Organizational Unit called "_EMPLOYEES" Create another OU name called "_ADMINS" Create a new emyployee(ex:Jane Doe) and a username(ex:jane_admin). add the user to "Domain Admins" Security Group. Log out/close Remote Desktop connection to DC-1 and log back in as "mydomain.com\jane_admin" or whatever username you did. the user is an admin account from now on. Next you join Client-1 to your domain. Go to the azure portal and set Client-1's DNS settings to the DC's Private IP address and proceed to restart Client-1 from the Azure Portal. Login to Client-1 as the original local admin (labuser) and join it to the domain (computer will automatically restart). 
+Create Admin and Normal user acccount. Create Organizational Unit "_EMPLOYEES" Create another OU "_ADMINS" Create emyployee(ex:Jane Doe) and a username(ex:jane_admin). add user to "Domain Admins" Security Group. Log out/close Remote Desktop connection to DC-1 and log back in as "mydomain.com\jane_admin." User classified by admin account. Join Client-1 to domain. In azure portal set Client-1's DNS settings to DC's Private IP address. restart Client-1 from the Azure Portal. Login to Client-1 as local admin (labuser) and join it to the domain (computer auto-restart). 
 </p>
 <br />
 
@@ -70,6 +70,6 @@ Then create an Admin and Normal user acccount. Create an Organizational Unit cal
   
 </p>
 <p>
-Next Login to DC and verify Client-1 shows up in Active Directory Users and Computers (ADUC) under "Computers" container on root of the domain. Set up remote desktop for non-admin users on Client-1. log in as the domain admin and open system properties, click "remote desktop" and allow "domain users" access to it so you can log in as a normal non-admin user. Next create a bunch of additional users and attempt to log into Client-1 as one of them (good for businesses that have thousands of employees or schools that have thousands of students). Login to DC-1 as admin, open Powershell_ise as an administrator, create a new file and paste the contents of the script into it. Run the script and observe the accounts being created. After, open ADUC and observe the accounts in OU and attempt to login as one on Client-1. 
+Login to DC, verify Client-1 appears in Active Directory Users and Computers (ADUC) under "Computers" of the domain. Remote desktop for non-admin users/Client-1. log in as domain admin > system properties, click "remote desktop" allow "domain users" access to normal non-admin user Login. Create additional users > attempt to log into Client-1 (thousands of employees/thousands of students). Login to DC-1 as admin, open Powershell_ise as administrator, create new file /paste the script into it. Run script and observe accounts being created. open ADUC and observe accounts in OU, attempt to login as one on Client-1. 
 </p>
 <br />
